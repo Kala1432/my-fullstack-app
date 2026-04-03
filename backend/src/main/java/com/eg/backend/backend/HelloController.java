@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @GetMapping("/")
+    @GetMapping("/bk")
     public String home() {
-        return "Backend is working 🚀";
+        return "Backend is working with the hello endpoint 🚀";
     }
 }
