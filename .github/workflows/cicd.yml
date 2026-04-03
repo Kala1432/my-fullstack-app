@@ -1,0 +1,35 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Backend build
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+
+      - name: Build Backend
+        run: |
+          cd backend
+          ./mvnw clean package
+
+      # Frontend build
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
